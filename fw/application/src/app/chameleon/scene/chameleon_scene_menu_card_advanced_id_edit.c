@@ -32,6 +32,9 @@ static const char *get_id_edit_title(app_chameleon_id_edit_type_t id_edit_type) 
     case APP_CHAMELEON_ID_EDIT_TYPE_ATQA:
         return "ATQA:";
 
+    case APP_CHAMELEON_ID_EDIT_TYPE_ATS:
+        return "ATS:";
+
     default:
         return "";
     }
@@ -61,6 +64,19 @@ static void format_id_edit_text(app_chameleon_id_edit_type_t id_edit_type, char 
 
     case APP_CHAMELEON_ID_EDIT_TYPE_ATQA:
         sprintf(text, "%02x.%02x", coll_res->atqa[1], coll_res->atqa[0]);
+        return;
+
+    case APP_CHAMELEON_ID_EDIT_TYPE_ATS:
+        if (coll_res->ats->length > 0) {
+            char *p = text;
+            for (uint8_t i = 0; i < coll_res->ats->length && i < 10; i++) {
+                if (i > 0) *p++ = '.';
+                sprintf(p, "%02x", coll_res->ats->data[i]);
+                p += 2;
+            }
+        } else {
+            text[0] = '\0';
+        }
         return;
     }
 }
@@ -124,6 +140,31 @@ static bool handle_id_edit_cb(app_chameleon_t *app, const char *text) {
             return true;
         }
         break;
+
+    case APP_CHAMELEON_ID_EDIT_TYPE_ATS: {
+        if (strlen(text) == 0) {
+            // Empty input clears ATS (reverts to auto mode)
+            coll_res->ats->length = 0;
+            return true;
+        }
+        // Parse dot-separated hex bytes
+        uint8_t ats_data[16];
+        uint8_t ats_len = 0;
+        const char *p = text;
+        while (*p && ats_len < sizeof(ats_data)) {
+            int val;
+            if (sscanf(p, "%02x", &val) != 1) break;
+            ats_data[ats_len++] = (uint8_t)val;
+            p += 2;
+            if (*p == '.') p++;
+        }
+        if (ats_len > 0) {
+            memcpy(coll_res->ats->data, ats_data, ats_len);
+            coll_res->ats->length = ats_len;
+            return true;
+        }
+        break;
+    }
     }
 
     return false;
@@ -133,7 +174,7 @@ static void text_input_event_cb(mui_text_input_event_t event, mui_text_input_t *
     app_chameleon_t *app = p_text_input->user_data;
     if (event == MUI_TEXT_INPUT_EVENT_CONFIRMED) {
         const char *text = mui_text_input_get_input_text(p_text_input);
-        if (strlen(text) > 0) {
+        if (strlen(text) > 0 || app->id_edit_type == APP_CHAMELEON_ID_EDIT_TYPE_ATS) {
             if (handle_id_edit_cb(app, text)) {
                 mui_scene_dispatcher_previous_scene(app->p_scene_dispatcher);
             } else {
@@ -147,7 +188,7 @@ static void text_input_event_cb(mui_text_input_event_t event, mui_text_input_t *
 
 void chameleon_scene_menu_card_advanced_id_edit_on_enter(void *user_data) {
     app_chameleon_t *app = user_data;
-    char text[32];
+    char text[48];
 
     format_id_edit_text(app->id_edit_type, text);
 
