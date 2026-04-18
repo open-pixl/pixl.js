@@ -16,6 +16,10 @@
 
 #include "fds_utils.h"
 
+#include <ctype.h>
+
+#define ATS_MAX_LENGTH 16
+
 typedef enum {
     CHAMELEON_MENU_BACK,
     CHAMELEON_MENU_FILE,
@@ -68,8 +72,10 @@ static void format_id_edit_text(app_chameleon_id_edit_type_t id_edit_type, char 
 
     case APP_CHAMELEON_ID_EDIT_TYPE_ATS:
         if (coll_res->ats->length > 0) {
+            uint8_t len = coll_res->ats->length;
+            if (len > ATS_MAX_LENGTH) len = ATS_MAX_LENGTH;
             char *p = text;
-            for (uint8_t i = 0; i < coll_res->ats->length && i < 10; i++) {
+            for (uint8_t i = 0; i < len; i++) {
                 if (i > 0) *p++ = '.';
                 sprintf(p, "%02x", coll_res->ats->data[i]);
                 p += 2;
@@ -147,23 +153,27 @@ static bool handle_id_edit_cb(app_chameleon_t *app, const char *text) {
             coll_res->ats->length = 0;
             return true;
         }
-        // Parse dot-separated hex bytes
-        uint8_t ats_data[16];
+        uint8_t ats_data[ATS_MAX_LENGTH];
         uint8_t ats_len = 0;
         const char *p = text;
-        while (*p && ats_len < sizeof(ats_data)) {
-            int val;
-            if (sscanf(p, "%02x", &val) != 1) break;
+        while (*p) {
+            if (ats_len >= ATS_MAX_LENGTH) return false;
+            if (!isxdigit((unsigned char)p[0]) || !isxdigit((unsigned char)p[1])) return false;
+            unsigned int val;
+            if (sscanf(p, "%2x", &val) != 1) return false;
             ats_data[ats_len++] = (uint8_t)val;
             p += 2;
-            if (*p == '.') p++;
+            if (*p == '.') {
+                p++;
+                if (*p == '\0') return false;
+            } else if (*p != '\0') {
+                return false;
+            }
         }
-        if (ats_len > 0) {
-            memcpy(coll_res->ats->data, ats_data, ats_len);
-            coll_res->ats->length = ats_len;
-            return true;
-        }
-        break;
+        if (ats_len == 0) return false;
+        memcpy(coll_res->ats->data, ats_data, ats_len);
+        coll_res->ats->length = ats_len;
+        return true;
     }
     }
 
