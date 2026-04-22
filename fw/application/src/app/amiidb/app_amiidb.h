@@ -48,7 +48,7 @@ typedef struct {
     uint8_t game_id_index;
 
     /** fav list*/
-    string_t cur_fav_dir;
+    string_ptr cur_fav_dir;
     amiidb_fav_t cur_fav;
     uint8_t in_fav_folders;
 

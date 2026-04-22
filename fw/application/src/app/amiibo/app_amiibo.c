@@ -51,6 +51,8 @@ void app_amiibo_on_run(mini_app_inst_t *p_app_inst) {
 
     p_app_handle->p_scene_dispatcher = mui_scene_dispatcher_create();
 
+    p_app_handle->current_file = mui_mem_malloc(sizeof(*p_app_handle->current_file));
+    p_app_handle->current_folder = mui_mem_malloc(sizeof(*p_app_handle->current_folder));
     string_init(p_app_handle->current_file);
     string_init(p_app_handle->current_folder);
     string_array_init(p_app_handle->amiibo_files);
@@ -148,6 +150,8 @@ void app_amiibo_on_kill(mini_app_inst_t *p_app_inst) {
 
     string_clear(p_app_handle->current_file);
     string_clear(p_app_handle->current_folder);
+    mui_mem_free(p_app_handle->current_file);
+    mui_mem_free(p_app_handle->current_folder);
     string_array_clear(p_app_handle->amiibo_files);
 
     mui_mem_free(p_app_handle);

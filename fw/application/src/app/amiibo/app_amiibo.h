@@ -26,8 +26,8 @@ typedef struct {
 
     /** file browser*/
     vfs_drive_t current_drive;
-    string_t current_folder;
-    string_t current_file;
+    string_ptr current_folder;
+    string_ptr current_file;
     uint32_t current_focus_index;
 
     /**amiibo detail view*/
