@@ -51,7 +51,6 @@ void app_amiidb_on_run(mini_app_inst_t *p_app_inst) {
     p_app_handle->p_toast_view = mui_toast_view_create();
     mui_toast_view_set_user_data(p_app_handle->p_toast_view, p_app_handle);
     
-    p_app_handle->cur_fav_dir = mui_mem_malloc(sizeof(*p_app_handle->cur_fav_dir));
     string_init(p_app_handle->cur_fav_dir);
     string_init(p_app_handle->search_str);
     p_app_handle->in_fav_folders = true;
@@ -139,7 +138,6 @@ void app_amiidb_on_kill(mini_app_inst_t *p_app_inst) {
     mui_view_dispatcher_free(p_app_handle->p_view_dispatcher_toast);
 
     string_clear(p_app_handle->cur_fav_dir);
-    mui_mem_free(p_app_handle->cur_fav_dir);
     string_clear(p_app_handle->search_str);
     amiidb_fav_array_clear(p_app_handle->fav_array);
 
