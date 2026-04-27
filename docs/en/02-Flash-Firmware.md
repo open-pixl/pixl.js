@@ -63,7 +63,7 @@ You can use either method below to recover.
 
 ## Option 1: Flash the firmware via wired connection
 
-If you have any CMASS-DAP compatible JLink or DAPLink programmer on hand, you can use the [Wired Method](#method-1-wired) to flash the correct firmware version manually.
+If you have any CMASS-DAP-compatible JLink or DAPLink programmer on hand, you can use the [Wired Method](#method-1-wired) to flash the correct firmware version manually.
 
 
 ## Option 2: Enter DFU mode with the key sequence.
