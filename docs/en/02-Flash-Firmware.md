@@ -83,4 +83,4 @@ The screen may still show stripes or a garbled image while the device is in DFU 
 
 If blind menu navigation fails, use the bootloader DFU button instead: power off the device, hold RIGHT for about 3 seconds while powering on, and wait until the device advertises as `pixl dfu`.
 
-Now the device is in DFU mode. Use either the [nRF Connect APP](#nrf-connect-app) or the [Firmware Update Page](#directly-to-the-firmware-update-page) to flash the correct `pixjs_ota_vxxx.zip` file for your hardware version. If the web update stalls, start the update again; DFU can resume. If the official web page does not find the device or the browser update keeps stalling, use nRF Connect or the wired method instead.
+Now the device is in DFU mode. Use either the [nRF Connect APP](#nrf-connect-app) or the [Firmware Update Page](#directly-to-the-firmware-update-page) to flash the correct `pixjs_ota_vxxx.zip` file for your hardware version. If the web update stalls, start the update again; DFU can resume. If the official web page does not find the device or the browser update continues to stall, use nRF Connect or the wired method instead.
