@@ -3,7 +3,7 @@ After you build the hardware you need to flash the firmware for the first time, 
 The firmware can be flashed or upgraded using one of the follow methods:
 
 ## Method 1: Wired
-This method requires a CMASS-DAP compatible JLink or DAPLink flasher.  We recommend PWLINK2 Lite Emulator STM32 Programmer, you can buy one for about 9.9 yuan on [Taobao](https://item.taobao.com/item.htm?spm=a1z09.2.0.0.4b942e8deXyaQO&id=675067753017&_u=d2p75qfn774a "Taobao")
+This method requires a CMSIS-DAP-compatible JLink or DAPLink flasher.  We recommend PWLINK2 Lite Emulator STM32 Programmer, you can buy one for about 9.9 yuan on [Taobao](https://item.taobao.com/item.htm?spm=a1z09.2.0.0.4b942e8deXyaQO&id=675067753017&_u=d2p75qfn774a "Taobao")
 
 Download the latest version of the firmware zip package. It should contain next files:
 - fw_update.bat
@@ -63,7 +63,7 @@ You can use either method below to recover.
 
 ## Option 1: Flash the firmware via wired connection
 
-If you have any CMASS-DAP-compatible JLink or DAPLink programmer on hand, you can use the [Wired Method](#method-1-wired) to flash the correct firmware version manually.
+If you have any CMSIS-DAP-compatible JLink or DAPLink programmer on hand, you can use the [Wired Method](#method-1-wired) to flash the correct firmware version manually.
 
 
 ## Option 2: Enter DFU mode with the key sequence.
@@ -81,6 +81,6 @@ If you do not know which version was flashed, try LEFT 5 times first because cur
 
 The screen may still show stripes or a garbled image while the device is in DFU mode. This is expected when the wrong display firmware is installed.
 
-If blind menu navigation fails, use the bootloader DFU button instead: power off the device, hold RIGHT for about 3 seconds while powering on, and wait until the device advertises as `pixl dfu`.
+If blind menu navigation fails, use the bootloader DFU button instead: power off the device, then hold RIGHT and power on the device while continuing to hold RIGHT for about 3 seconds until the device advertises as `pixl dfu`.
 
 Now the device is in DFU mode. Use either the [nRF Connect APP](#nrf-connect-app) or the [Firmware Update Page](#directly-to-the-firmware-update-page) to flash the correct `pixjs_ota_vxxx.zip` file for your hardware version. If the web update stalls, start the update again; DFU can resume. If the official web page does not find the device or the browser update continues to stall, use nRF Connect or the wired method instead.
