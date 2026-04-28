@@ -38,7 +38,8 @@ On iOS, The firmware is `pixjs_ota_vxxx.zip` in the compressed package and needs
 On Android you can use the DFU icon on the upper right of the screen, Select the `Distribution packet (ZIP)` option and browse your storage for the `pixjs_ota_vxxx.zip` file.
 
 ### Web page method
-Download the latest version of the firmware zip package correspondent to your device version, and extract it to a directory.
+Download the latest version of the firmware zip package corresponding to your device version, and extract it to a directory.
+The release package is an outer zip file for your hardware version. Do not upload that outer zip file to the DFU updater. After extracting it, use the inner OTA package named `pixjs_ota_vxxx.zip`. Uploading the outer release zip can cause errors such as `Unable to find manifest` or `init not found`.
 
 The project provide two ways to achive a DFU update:
 
@@ -50,7 +51,7 @@ Also you can go directly to the Firmware Update Page.
 
 First you need to put your pixl.js device on "Firmware Update" mode.  To do so, select the `Settings` app and select the item `Firmware Update`.
 
-Open the [firmware update page](https://thegecko.github.io/web-bluetooth-dfu).  Drag and drop or select `pixljs_ota_xxx.zip` file from the folder where you extract the firmware package.
+Open the [firmware update page](https://thegecko.github.io/web-bluetooth-dfu).  Drag and drop or select the inner `pixjs_ota_vxxx.zip` file from the folder where you extracted the firmware package.
 
 Then press the `SELECT DEVICE` button on the page you should see a device called `pixl dfu` connect to start the firmware upgrade process.
 
