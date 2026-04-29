@@ -55,3 +55,6 @@ fw/temp
 *.un~
 
 **/.vscode/.cortex-debug*.json
+fw/bootloader/*.local.pem
+fw/bootloader/*private*.pem
+fw/bootloader/*release*.pem
