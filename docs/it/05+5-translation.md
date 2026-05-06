@@ -3,9 +3,9 @@
 
 ## Come aggiornare una traduzione esistente
 
-1. Modifica fw/data/i18n.csv con il tuo editor di testo preferito. Per vscode, si consiglia l'estensione "Edit csv".
-2. Esegui `fw/scripts/i18n_gen.py` per generare nuovi file di lingua.
-3. Opzionale: Esegui `fw/scripts/font_data_gen.sh` per generare nuovi dati di font se aggiungi nuovi caratteri in i18n.csv
+1. Modifica firmware/data/i18n.csv con il tuo editor di testo preferito. Per vscode, si consiglia l'estensione "Edit csv".
+2. Esegui `firmware/scripts/i18n_gen.py` per generare nuovi file di lingua.
+3. Opzionale: Esegui `firmware/scripts/font_data_gen.sh` per generare nuovi dati di font se aggiungi nuovi caratteri in i18n.csv
 4. Esegui `make full` per ricostruire il firmware
 
 nota: <br />
@@ -13,10 +13,10 @@ Lo script `font_data_gen.sh` può essere eseguito solo in Git Bash windows in Wi
 
 ## Come aggiungere una nuova traduzione di lingua
 
-1. Aggiungi una nuova colonna in fw/data/i18n.csv, ad esempio "ja_JP"
-2. Esegui `fw/scripts/i18n_gen.py` per generare nuovi file di lingua.
-3. Opzionale: Esegui `fw/scripts/font_data_gen.sh` per generare nuovi dati di font se aggiungi nuovi caratteri in i18n.csv
-4. Modifica `fw/application/src/i18n/language.h` e `fw/application/src/i18n/language.c` per adottare la nuova lingua
+1. Aggiungi una nuova colonna in firmware/data/i18n.csv, ad esempio "ja_JP"
+2. Esegui `firmware/scripts/i18n_gen.py` per generare nuovi file di lingua.
+3. Opzionale: Esegui `firmware/scripts/font_data_gen.sh` per generare nuovi dati di font se aggiungi nuovi caratteri in i18n.csv
+4. Modifica `firmware/application/src/i18n/language.h` e `firmware/application/src/i18n/language.c` per adottare la nuova lingua
 5. Modifica il Makefile per includere `$(PROJ_DIR)/i18n/ja_JP.c` come file sorgente C
 6. Esegui `make full` per ricostruire il firmware
 

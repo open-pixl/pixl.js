@@ -73,7 +73,7 @@ Se il video è più grande, puoi ridurre le dimensioni del video come segue:
 Infine, esegui il seguente comando per convertirlo in un file di animazione personalizzato
 
 ```
-python3 fw/scripts/video_clip_gen.py 10 frames badapple.bin
+python3 firmware/scripts/video_clip_gen.py 10 frames badapple.bin
 ```
 La descrizione del parametro è la seguente:
 

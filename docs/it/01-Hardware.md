@@ -1,7 +1,7 @@
 # PCB
 L'hardware di pixl.js è sviluppato e mantenuto nel repository, puoi accedere alla versione più recente dell'hardware nella [sezione Hardware del repository GitHub.](https://github.com/solosky/pixl.js/tree/main/hw "Sezione Hardware del repository GitHub.")
 
-hw/RevC è la versione più recente del PCB, si consiglia di utilizzarla.
+hardware/RevC è la versione più recente del PCB, si consiglia di utilizzarla.
 Puoi usare [Kicad 6](https://www.kicad.org/download/) per aprire e modificare i file del PCB e dello schema.
 
 ![PCB pixl.js](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-pcb-revc.png)

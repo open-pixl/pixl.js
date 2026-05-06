@@ -1,6 +1,6 @@
 # PCB
 
-hw/RevC 路径为最新的PCB版本，建议使用。您可以使用 [Kicad 6](https://www.kicad.org/download/) 打开和编辑PCB和原理图文件。
+hardware/RevC 路径为最新的PCB版本，建议使用。您可以使用 [Kicad 6](https://www.kicad.org/download/) 打开和编辑PCB和原理图文件。
 
 ![pixl.js PCB](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-pcb-revc.png)
 

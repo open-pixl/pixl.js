@@ -1,60 +1,60 @@
-fw/.settings
-fw/_build
-fw/.idea
+firmware/.settings
+firmware/_build
+firmware/.idea
 
-fw/application/.idea
-fw/bootloader/.idea
+firmware/application/.idea
+firmware/bootloader/.idea
 
-fw/src/amiibo_private.c
-fw/src/version.inc.h
-fw/src/version.json
+firmware/src/amiibo_private.c
+firmware/src/version.inc.h
+firmware/src/version.json
 
-fw/application/log.log
-fw/bootloader/log.log
+firmware/application/log.log
+firmware/bootloader/log.log
 
 
-fw/log.log
+firmware/log.log
 
 fp-info-cache
 pixl.js-backups
 
-hw/RevB/pixl.js/gerber
-hw/RevB/pixl.js/bom
-hw/RevB/pixl.js/*.zip
-hw/RevB/pixl.js/*.pdf
-hw/RevB/pixl.js/*.kicad_prl
-hw/RevB/pixl.js/*.plt
+hardware/RevB/pixl.js/gerber
+hardware/RevB/pixl.js/bom
+hardware/RevB/pixl.js/*.zip
+hardware/RevB/pixl.js/*.pdf
+hardware/RevB/pixl.js/*.kicad_prl
+hardware/RevB/pixl.js/*.plt
 
-hw/RevA/pixl.js/gerber
-hw/RevA/pixl.js/bom
-hw/RevA/pixl.js/*.zip
-hw/RevA/pixl.js/*.pdf
-hw/RevA/pixl.js/*.kicad_prl
+hardware/RevA/pixl.js/gerber
+hardware/RevA/pixl.js/bom
+hardware/RevA/pixl.js/*.zip
+hardware/RevA/pixl.js/*.pdf
+hardware/RevA/pixl.js/*.kicad_prl
 
 
-hw/Ultra.RevB
-hw/Ultra.RevC
-hw/NEO.RevB
+hardware/Ultra.RevB
+hardware/Ultra.RevC
+hardware/NEO.RevB
 
-hw/RevC
-hw/RevD
-hw/SP.RevA
-hw/PRO.RevA
-hw/LIPO.RevA
+hardware/RevC
+hardware/RevD
+hardware/SP.RevA
+hardware/PRO.RevA
+hardware/LIPO.RevA
 3d
 
 dist
 # venv stuff
 .venv
 
-fw/scripts/.venv
+firmware/scripts/.venv
 
-fw/temp
+firmware/temp
 
 .DS_Store
 *.un~
 
 **/.vscode/.cortex-debug*.json
-fw/bootloader/*.local.pem
-fw/bootloader/*private*.pem
-fw/bootloader/*release*.pem
+firmware/bootloader/*.local.pem
+firmware/bootloader/*private*.pem
+firmware/bootloader/*release*.pem

@@ -2,9 +2,9 @@
 
 ## 如何更新现有的翻译
 
-使用您喜欢的文本编辑器编辑 `fw/data/i18n.csv`。对于VSCode，推荐使用扩展程序 "Edit csv"。
-运行 `fw/scripts/i18n_gen.py` 以生成新的语言文件。
-可选步骤：如果您在 i18n.csv 中添加了新字符，则运行 `fw/scripts/font_data_gen.sh` 生成新的字体数据。
+使用您喜欢的文本编辑器编辑 `firmware/data/i18n.csv`。对于VSCode，推荐使用扩展程序 "Edit csv"。
+运行 `firmware/scripts/i18n_gen.py` 以生成新的语言文件。
+可选步骤：如果您在 i18n.csv 中添加了新字符，则运行 `firmware/scripts/font_data_gen.sh` 生成新的字体数据。
 运行 `make full` 重新构建固件。
 
 注意: <br />
@@ -12,10 +12,10 @@
 
 ## 如何添加新的语言翻译
 
-1. 在 `fw/data/i18n.csv` 中添加新的列，例如 "ja_JP"。
-2. 运行 `fw/scripts/i18n_gen.py` 生成新的语言文件。
-3. （可选）如果在 i18n.csv 中添加了新字符，则运行 `fw/scripts/font_data_gen.sh` 生成新的字体数据。
-4. 编辑 `fw/application/src/i18n/language.h` 和 `fw/application/src/i18n/language.c` 以适应新语言。
+1. 在 `firmware/data/i18n.csv` 中添加新的列，例如 "ja_JP"。
+2. 运行 `firmware/scripts/i18n_gen.py` 生成新的语言文件。
+3. （可选）如果在 i18n.csv 中添加了新字符，则运行 `firmware/scripts/font_data_gen.sh` 生成新的字体数据。
+4. 编辑 `firmware/application/src/i18n/language.h` 和 `firmware/application/src/i18n/language.c` 以适应新语言。
 5. 编辑Makefile以将 `$(PROJ_DIR)/i18n/ja_JP.c` 包含为C源文件。
 6. 运行 `make full` 重新构建固件。
 

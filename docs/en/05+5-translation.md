@@ -13,28 +13,28 @@ For **Linux**, most distributions come with `python` and `git` by default and **
 
 1. Clone this repository
    `git clone https://github.com/solosky/pixl.js.git; cd pixl.js`
-2. Edit `fw/data/i18n.csv`
-3. Run `py.exe fw/scripts/i18n_gen.py` to generate new language files.
-4. _Optional:_ Run `py.exe fw/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
+2. Edit `firmware/data/i18n.csv`
+3. Run `py.exe firmware/scripts/i18n_gen.py` to generate new language files.
+4. _Optional:_ Run `py.exe firmware/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
 5. [Build the Firmware](03-Build-Firmware.md)
 
 ### Linux and macOS
 
 1. Clone this repository
    `git clone https://github.com/solosky/pixl.js.git; cd pixl.js`
-2. Edit `fw/data/i18n.csv`
-3. Run `python3 fw/scripts/i18n_gen.py` to generate new language files.
-4. Optional: Run `python fw/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
+2. Edit `firmware/data/i18n.csv`
+3. Run `python3 firmware/scripts/i18n_gen.py` to generate new language files.
+4. Optional: Run `python firmware/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
 5. [Build the Firmware](03-Build-Firmware.md)
 
 ## How to add new language translation
 
 The process is similar to updating an existing translation, and has the same requirements depending on your Operating System.
 
-1. Add new column in `fw/data/i18n.csv`, for example "ja_JP"
-2. Run `fw/scripts/i18n_gen.py` to generate new language files.
-3. Optional: Run `fw/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
-4. Edit `fw/application/src/i18n/language.h` and `fw/application/src/i18n/language.c` to adopt new language
+1. Add new column in `firmware/data/i18n.csv`, for example "ja_JP"
+2. Run `firmware/scripts/i18n_gen.py` to generate new language files.
+3. Optional: Run `firmware/scripts/font_data_gen.py` to generate new font data if you add new characters in `i18n.csv`
+4. Edit `firmware/application/src/i18n/language.h` and `firmware/application/src/i18n/language.c` to adopt new language
 5. Edit Makefile to include `$(PROJ_DIR)/i18n/ja_JP.c` as C source files
 6. [Build the Firmware](03-Build-Firmware.md)
 

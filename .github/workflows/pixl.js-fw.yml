@@ -33,8 +33,8 @@ jobs:
     - name: compare size against PR base (bytes)
       run: |
         set -eu
-        HEAD_REPORT_JSON="fw/_build/size_report_${{matrix.board}}.json"
-        COMPARISON_MD="fw/_build/size_comparison_${{matrix.board}}.md"
+        HEAD_REPORT_JSON="firmware/_build/size_report_${{matrix.board}}.json"
+        COMPARISON_MD="firmware/_build/size_comparison_${{matrix.board}}.md"
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           BASE_WORKTREE="/tmp/pixljs-base-${{matrix.board}}-${{ github.run_id }}-${{ github.run_attempt }}"
@@ -43,37 +43,37 @@ jobs:
           git worktree add "${BASE_WORKTREE}" "${BASE_SHA}"
           git -C "${BASE_WORKTREE}" submodule update --init --recursive
           make -C "${BASE_WORKTREE}/fw" all RELEASE=1 APP_VERSION=$GITHUB_RUN_NUMBER BOARD=${{matrix.board}}
-          python3 fw/scripts/size_report.py summarize \
-            --bin "${BASE_WORKTREE}/fw/_build/pixljs.bin" \
-            --elf "${BASE_WORKTREE}/fw/_build/pixljs.out" \
-            --map "${BASE_WORKTREE}/fw/_build/pixljs.map" \
+          python3 firmware/scripts/size_report.py summarize \
+            --bin "${BASE_WORKTREE}/firmware/_build/pixljs.bin" \
+            --elf "${BASE_WORKTREE}/firmware/_build/pixljs.out" \
+            --map "${BASE_WORKTREE}/firmware/_build/pixljs.map" \
             --top-symbols 20 \
             --top-objects 20 \
             --board "${{matrix.board}}" \
             --release 1 \
-            --out-prefix "${BASE_WORKTREE}/fw/_build/size_report_${{matrix.board}}"
-          python3 fw/scripts/size_report.py compare \
-            --base "${BASE_WORKTREE}/fw/_build/size_report_${{matrix.board}}.json" \
+            --out-prefix "${BASE_WORKTREE}/firmware/_build/size_report_${{matrix.board}}"
+          python3 firmware/scripts/size_report.py compare \
+            --base "${BASE_WORKTREE}/firmware/_build/size_report_${{matrix.board}}.json" \
             --head "${HEAD_REPORT_JSON}" \
             --output "${COMPARISON_MD}"
-          cp "${BASE_WORKTREE}/fw/_build/size_report_${{matrix.board}}.json" "fw/_build/size_report_base_${{matrix.board}}.json"
-          cp "${BASE_WORKTREE}/fw/_build/size_report_${{matrix.board}}.txt" "fw/_build/size_report_base_${{matrix.board}}.txt"
+          cp "${BASE_WORKTREE}/firmware/_build/size_report_${{matrix.board}}.json" "firmware/_build/size_report_base_${{matrix.board}}.json"
+          cp "${BASE_WORKTREE}/firmware/_build/size_report_${{matrix.board}}.txt" "firmware/_build/size_report_base_${{matrix.board}}.txt"
         else
           echo "Baseline comparison is available on pull_request runs only." > "${COMPARISON_MD}"
         fi
     - name: copy artifact
       run: |
-        mv fw/_build/bootloader.hex .
-        mv fw/_build/pixljs.hex .
-        mv fw/_build/pixljs_all.hex .
-        mv fw/_build/pixjs_ota_v${{github.run_number}}.zip .
-        mv fw/docs/fw_readme.txt .
-        mv fw/scripts/fw_update.bat .
-        cp fw/_build/size_report_${{matrix.board}}.txt .
-        cp fw/_build/size_report_${{matrix.board}}.json .
-        cp fw/_build/size_comparison_${{matrix.board}}.md .
-        if [ -f fw/_build/size_report_base_${{matrix.board}}.txt ]; then cp fw/_build/size_report_base_${{matrix.board}}.txt .; fi
-        if [ -f fw/_build/size_report_base_${{matrix.board}}.json ]; then cp fw/_build/size_report_base_${{matrix.board}}.json .; fi
+        mv firmware/_build/bootloader.hex .
+        mv firmware/_build/pixljs.hex .
+        mv firmware/_build/pixljs_all.hex .
+        mv firmware/_build/pixjs_ota_v${{github.run_number}}.zip .
+        mv firmware/docs/fw_readme.txt .
+        mv firmware/scripts/fw_update.bat .
+        cp firmware/_build/size_report_${{matrix.board}}.txt .
+        cp firmware/_build/size_report_${{matrix.board}}.json .
+        cp firmware/_build/size_comparison_${{matrix.board}}.md .
+        if [ -f firmware/_build/size_report_base_${{matrix.board}}.txt ]; then cp firmware/_build/size_report_base_${{matrix.board}}.txt .; fi
+        if [ -f firmware/_build/size_report_base_${{matrix.board}}.json ]; then cp firmware/_build/size_report_base_${{matrix.board}}.json .; fi
     - name: upload artifact
       uses: actions/upload-artifact@v7
       with:

@@ -60,7 +60,7 @@ ffmpeg -y -i badapple.mp4 -ss 0:0 -t 60 -vf "scale=128:64:decrease:flags=lanczos
 最后执行如下命令转换为 自定义的动画文件 
 
 ```
-python3 fw/scripts/video_clip_gen.py 10 frames badapple.bin 
+python3 firmware/scripts/video_clip_gen.py 10 frames badapple.bin 
 ```
 参数说明如下：
 
