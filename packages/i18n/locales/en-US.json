@@ -25,14 +25,14 @@
     "release.link": "Open releases"
   },
   "firmware": {
-    "app.settings.display_flip": "Flip Screen",
-    "app.settings.return_key_detect": "Detect Return Button",
-    "app.settings.return_key": "Return Button",
-    "app.settings.return_key_not_configured": "Not configured",
-    "app.settings.return_key_set": "Return button set: GPIO %u",
-    "app.settings.return_key_not_detected": "Return button not detected",
-    "app.settings.return_key_detect_running": "Detection already running",
-    "app.settings.return_key_detect_prompt": "Press physical Return button",
-    "app.settings.return_key_detect_failed": "Cannot start return detect"
+    "app.settings.display_flip": "Flip",
+    "app.settings.return_key_detect": "Detect Key",
+    "app.settings.return_key": "Return Key",
+    "app.settings.return_key_not_configured": "Unset",
+    "app.settings.return_key_set": "Key GPIO %u",
+    "app.settings.return_key_not_detected": "Key not found",
+    "app.settings.return_key_detect_running": "Detect running",
+    "app.settings.return_key_detect_prompt": "Press return key",
+    "app.settings.return_key_detect_failed": "Detect failed"
   }
 }

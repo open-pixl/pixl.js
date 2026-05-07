@@ -599,10 +599,13 @@ LIB_FILES += \
 ifneq ($(RELEASE), 1)
 OPT = -O2 -g3
 else
-OPT = -Os -ffunction-sections -fdata-sections
+OPT = -Os -flto -ffunction-sections -fdata-sections
 endif
-# Uncomment the line below to enable link time optimization
-# OPT += -flto
+
+APP_STACK_SIZE ?= 8192
+ifeq ($(BOARD), LCD)
+APP_STACK_SIZE = 7680
+endif
 
 # C flags common to all targets
 CFLAGS += $(OPT)
@@ -672,9 +675,9 @@ LDFLAGS += --specs=nano.specs
 LDFLAGS += -u _printf_float
 
 pixljs: CFLAGS += -D__HEAP_SIZE=4096
-pixljs: CFLAGS += -D__STACK_SIZE=8192
+pixljs: CFLAGS += -D__STACK_SIZE=$(APP_STACK_SIZE)
 pixljs: ASMFLAGS += -D__HEAP_SIZE=4096
-pixljs: ASMFLAGS += -D__STACK_SIZE=8192
+pixljs: ASMFLAGS += -D__STACK_SIZE=$(APP_STACK_SIZE)
 
 # Add standard libraries at the very end of the linker input, after all objects
 # that may need symbols provided by these libraries.
