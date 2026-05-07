@@ -1,7 +1,6 @@
 #include "settings.h"
 #include "boards.h"
 #include "nrf_error.h"
-#include "nrf_log.h"
 #include "vfs.h"
 #include "vfs_meta.h"
 
@@ -256,7 +255,6 @@ int32_t settings_init() {
     err = p_driver->stat_file(SETTINGS_FILE_NAME, &settings_obj);
     if (err == VFS_ERR_NOOBJ) {
         validate_settings();
-        NRF_LOG_INFO("settings not found, using defaults");
         return NRF_SUCCESS;
     }
     if (err < 0) {
@@ -265,7 +263,6 @@ int32_t settings_init() {
 
     if (settings_obj.size == 0) {
         validate_settings();
-        NRF_LOG_INFO("settings empty, using defaults");
         return NRF_SUCCESS;
     }
 
@@ -284,18 +281,9 @@ int32_t settings_init() {
     bool loaded = settings_try_deserialize_versioned(settings_raw, read_size, &m_settings_data);
     if (!loaded) {
         loaded = settings_deserialize_legacy(settings_raw, read_size, &m_settings_data);
-        if (loaded) {
-            NRF_LOG_INFO("settings migrated from legacy layout");
-        }
-    }
-
-    if (!loaded) {
-        NRF_LOG_WARNING("settings invalid, using defaults");
     }
 
     validate_settings();
-
-    NRF_LOG_INFO("settings loaded!");
     return NRF_SUCCESS;
 }
 
@@ -355,10 +343,7 @@ int32_t settings_save() {
             uint8_t meta_data[VFS_MAX_META_LEN];
             vfs_meta_encode(meta_data, sizeof(meta_data), &meta);
             err = p_driver->update_file_meta(SETTINGS_FILE_NAME, &meta_data, sizeof(meta_data));
-            NRF_LOG_INFO("Settings file meta updated!: %d", err);
         }
-
-        NRF_LOG_INFO("settings saved!");
     }
 
     return NRF_SUCCESS;
