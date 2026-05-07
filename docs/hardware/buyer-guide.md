@@ -1,10 +1,10 @@
 # Community Buyer Guide
 
-Open Pixl is non-commercial. This guide exists so users can share compatibility
+FreePixl is non-commercial. This guide exists so users can share compatibility
 reports for Pixl.js-compatible hardware. Links are not ads, affiliate links, paid
 placements, sponsorships, or endorsements.
 
-Open Pixl does not sell hardware and does not guarantee that a listing is safe,
+FreePixl does not sell hardware and does not guarantee that a listing is safe,
 available, authentic, compatible, or legal in your region.
 
 ## How to Read Reports

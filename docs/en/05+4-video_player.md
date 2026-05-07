@@ -86,7 +86,7 @@ Parameter description is as follows:
 
 Transfer the converted video files to the player directory of Flash storage in Pixl.js through the web page. The player directory cannot be created manually.
 
-Open Pixl.js, select [Animation Player], list all the files in the player directory, then select the video file you want to play, and press the middle button to play.
+On the Pixl.js device, select [Animation Player], list all the files in the player directory, then select the video file you want to play, and press the middle button to play.
 
 Notice:
 

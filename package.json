@@ -1,11 +1,11 @@
 {
-  "name": "open-pixl",
+  "name": "freepixl",
   "private": true,
   "packageManager": "pnpm@10.10.0",
   "scripts": {
-    "ci": "pnpm i18n:check && pnpm --filter @open-pixl/protocol build && pnpm --filter @open-pixl/web build",
-    "i18n:check": "pnpm --filter @open-pixl/i18n check",
-    "i18n:generate-firmware": "pnpm --filter @open-pixl/i18n generate-firmware"
+    "ci": "pnpm i18n:check && pnpm --filter @freepixl/protocol build && pnpm --filter @freepixl/web build",
+    "i18n:check": "pnpm --filter @freepixl/i18n check",
+    "i18n:generate-firmware": "pnpm --filter @freepixl/i18n generate-firmware"
   },
   "devDependencies": {
     "typescript": "^5.9.0"

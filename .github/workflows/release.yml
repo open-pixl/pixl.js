@@ -38,8 +38,8 @@ jobs:
             echo "::error::DFU_COMPAT_PRIVATE_KEY_PEM is required for release builds"
             exit 1
           fi
-          printf '%s\n' "${{ secrets.DFU_COMPAT_PRIVATE_KEY_PEM }}" > "$RUNNER_TEMP/open-pixl-release-dfu.pem"
-          chmod 600 "$RUNNER_TEMP/open-pixl-release-dfu.pem"
+          printf '%s\n' "${{ secrets.DFU_COMPAT_PRIVATE_KEY_PEM }}" > "$RUNNER_TEMP/freepixl-release-dfu.pem"
+          chmod 600 "$RUNNER_TEMP/freepixl-release-dfu.pem"
 
       - name: Build firmware
         run: |
@@ -47,22 +47,22 @@ jobs:
             RELEASE=1 \
             APP_VERSION="$GITHUB_RUN_NUMBER" \
             BOARD="${{ matrix.board }}" \
-            DFU_PRIVATE_KEY="$RUNNER_TEMP/open-pixl-release-dfu.pem"
+            DFU_PRIVATE_KEY="$RUNNER_TEMP/freepixl-release-dfu.pem"
 
       - name: Collect release artifacts
         run: |
           mkdir -p dist
-          cp firmware/_build/bootloader.hex "dist/open-pixl-${{ matrix.board }}-bootloader.hex"
-          cp firmware/_build/pixljs.hex "dist/open-pixl-${{ matrix.board }}-application.hex"
-          cp firmware/_build/pixljs_all.hex "dist/open-pixl-${{ matrix.board }}-full.hex"
-          cp firmware/_build/pixjs_ota_v${GITHUB_RUN_NUMBER}.zip "dist/open-pixl-${{ matrix.board }}-ota.zip"
+          cp firmware/_build/bootloader.hex "dist/freepixl-${{ matrix.board }}-bootloader.hex"
+          cp firmware/_build/pixljs.hex "dist/freepixl-${{ matrix.board }}-application.hex"
+          cp firmware/_build/pixljs_all.hex "dist/freepixl-${{ matrix.board }}-full.hex"
+          cp firmware/_build/pixjs_ota_v${GITHUB_RUN_NUMBER}.zip "dist/freepixl-${{ matrix.board }}-ota.zip"
           cd dist
-          zip "open-pixl-${{ matrix.board }}-release.zip" open-pixl-${{ matrix.board }}-*.hex open-pixl-${{ matrix.board }}-ota.zip
-          shasum -a 256 * > "open-pixl-${{ matrix.board }}-SHA256SUMS.txt"
+          zip "freepixl-${{ matrix.board }}-release.zip" freepixl-${{ matrix.board }}-*.hex freepixl-${{ matrix.board }}-ota.zip
+          shasum -a 256 * > "freepixl-${{ matrix.board }}-SHA256SUMS.txt"
 
       - uses: actions/upload-artifact@v7
         with:
-          name: open-pixl-release-${{ matrix.board }}
+          name: freepixl-release-${{ matrix.board }}
           if-no-files-found: error
           path: dist/*
 
@@ -75,7 +75,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v7
         with:
-          pattern: open-pixl-release-*
+          pattern: freepixl-release-*
           path: release-artifacts
           merge-multiple: true
 
@@ -94,9 +94,9 @@ jobs:
               name for name in os.listdir("dist") if os.path.isfile(os.path.join("dist", name))
           )
           manifest = {
-              "project": "open-pixl/pixl.js",
+              "project": "freepixl/pixl.js",
               "tag": os.environ["RELEASE_TAG"],
-              "homepage": "https://open-pixl.github.io/pixl.js/",
+              "homepage": "https://freepixl.github.io/pixl.js/",
               "artifacts": artifacts,
           }
           with open("dist/manifest.json", "w", encoding="utf-8") as fh:
@@ -112,5 +112,5 @@ jobs:
       - name: Publish GitHub release
         run: |
           gh release view "$RELEASE_TAG" >/dev/null 2>&1 || \
-            gh release create "$RELEASE_TAG" --title "$RELEASE_TAG" --notes "Open Pixl firmware release."
+            gh release create "$RELEASE_TAG" --title "$RELEASE_TAG" --notes "FreePixl firmware release."
           gh release upload "$RELEASE_TAG" dist/* --clobber

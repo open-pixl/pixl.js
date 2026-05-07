@@ -2,13 +2,13 @@
 
 Upstream source: `https://github.com/solosky/pixl.js`
 
-Open Pixl keeps Solosky compatibility as the baseline, then applies Open Pixl
+FreePixl keeps Solosky compatibility as the baseline, then applies FreePixl
 product decisions through specs and review. The main firmware intentionally
 excludes built-in games.
 
 ## Branches
 
-- `main`: Open Pixl development branch.
+- `main`: FreePixl development branch.
 - `upstream/solosky-main`: imported Solosky `main` reference.
 - `upstream/solosky-develop`: imported Solosky `develop` reference.
 
@@ -20,7 +20,7 @@ DFU, bootloader, settings, protocol, i18n generation, or persistent UX behavior.
 
 ## Compatibility Rule
 
-Open Pixl aims for 100% Solosky user-facing compatibility except for features
+FreePixl aims for 100% Solosky user-facing compatibility except for features
 explicitly removed by spec. Any incompatible behavior needs:
 
 - a linked spec,

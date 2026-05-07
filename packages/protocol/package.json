@@ -1,7 +1,7 @@
 {
-  "name": "@open-pixl/protocol",
+  "name": "@freepixl/protocol",
   "version": "0.1.0",
-  "description": "Shared TypeScript protocol helpers for Open Pixl web tools.",
+  "description": "Shared TypeScript protocol helpers for FreePixl web tools.",
   "type": "module",
   "license": "GPL-2.0-only",
   "main": "./dist/index.js",

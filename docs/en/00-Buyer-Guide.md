@@ -1,6 +1,6 @@
 # Buyer Guide and Hardware Variants
 
-The pixl.js firmware in this repository targets the open pixl.js hardware variants documented here. Before updating a device bought from a marketplace, identify the exact hardware variant and use the matching firmware package.
+The pixl.js firmware in this repository targets the documented pixl.js hardware variants listed here. Before updating a device bought from a marketplace, identify the exact hardware variant and use the matching firmware package.
 
 ## Official release packages
 

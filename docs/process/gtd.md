@@ -1,6 +1,6 @@
-# Getting Things Done for Open Pixl
+# Getting Things Done for FreePixl
 
-Open Pixl uses a lightweight GTD flow so community reports do not become an
+FreePixl uses a lightweight GTD flow so community reports do not become an
 unstructured backlog.
 
 ## States
@@ -39,5 +39,5 @@ feature removal. Use `needs-spec` when that boundary is crossed.
 
 Close issues with a short explanation and a pointer to the merged PR, release,
 docs page, or reason the project cannot take the work. For support/vendor cases,
-be explicit that Open Pixl does not endorse sellers and cannot validate every
+be explicit that FreePixl does not endorse sellers and cannot validate every
 hardware variant.

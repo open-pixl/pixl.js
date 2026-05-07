@@ -8,7 +8,7 @@ workflows, with mobile browsers as the primary UX.
 ## Goals
 
 - Use React, TypeScript, and Vite.
-- Deploy to `https://open-pixl.github.io/pixl.js/`.
+- Deploy to `https://freepixl.github.io/pixl.js/`.
 - Set Vite `base` to `/pixl.js/`.
 - Support macOS Chrome, macOS Edge, Android Chrome, and Android Edge.
 - Provide iOS fallback instructions for nRF Connect and OTA zip download.

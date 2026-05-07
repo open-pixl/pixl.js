@@ -2,8 +2,8 @@
 
 ## Summary
 
-Open Pixl regularly reviews Solosky changes and imports compatible fixes while
-keeping Open Pixl product decisions visible.
+FreePixl regularly reviews Solosky changes and imports compatible fixes while
+keeping FreePixl product decisions visible.
 
 ## Goals
 
@@ -15,11 +15,11 @@ keeping Open Pixl product decisions visible.
 ## Non-goals
 
 - Blindly mirroring every upstream branch.
-- Reintroducing features removed by Open Pixl specs.
+- Reintroducing features removed by FreePixl specs.
 
 ## Compatibility Impact
 
-Sync improves compatibility, but each imported change must respect Open Pixl
+Sync improves compatibility, but each imported change must respect FreePixl
 scope and release policy.
 
 ## UX/API/Firmware Behavior

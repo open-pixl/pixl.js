@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping Open Pixl. This project is community-run and non-commercial.
+Thanks for helping FreePixl. This project is community-run and non-commercial.
 
 ## Before Opening Work
 

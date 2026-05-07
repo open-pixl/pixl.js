@@ -1,6 +1,6 @@
 # Specification-Driven Development
 
-Open Pixl uses SDD when a change needs explicit product and compatibility
+FreePixl uses SDD when a change needs explicit product and compatibility
 decisions before code lands.
 
 ## When a Spec Is Required

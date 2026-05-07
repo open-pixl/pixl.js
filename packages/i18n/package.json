@@ -1,7 +1,7 @@
 {
-  "name": "@open-pixl/i18n",
+  "name": "@freepixl/i18n",
   "version": "0.1.0",
-  "description": "Open Pixl locale source and firmware string generator.",
+  "description": "FreePixl locale source and firmware string generator.",
   "type": "module",
   "license": "GPL-2.0-only",
   "exports": {

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import enUS from "@open-pixl/i18n/locales/en-US.json";
-import ptBR from "@open-pixl/i18n/locales/pt-BR.json";
-import { NRF_DFU_SERVICE_UUID, detectBrowserSupport } from "@open-pixl/protocol";
+import enUS from "@freepixl/i18n/locales/en-US.json";
+import ptBR from "@freepixl/i18n/locales/pt-BR.json";
+import { NRF_DFU_SERVICE_UUID, detectBrowserSupport } from "@freepixl/protocol";
 
 type LocaleCode = "en-US" | "pt-BR";
 type LocaleTree = typeof enUS;
@@ -91,7 +91,7 @@ export function App() {
 
       <section className="intro">
         <p>{t("app.subtitle")}</p>
-        <a href="https://github.com/open-pixl/pixl.js/releases">{t("release.link")}</a>
+        <a href="https://github.com/freepixl/pixl.js/releases">{t("release.link")}</a>
       </section>
 
       <section className="panel">

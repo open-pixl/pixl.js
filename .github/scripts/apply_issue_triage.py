@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply conservative Open Pixl issue labels.
+"""Apply conservative FreePixl issue labels.
 
 The script is intentionally small:
 - dry-run is the default;

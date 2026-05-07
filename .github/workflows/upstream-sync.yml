@@ -29,7 +29,7 @@ jobs:
           {
             echo "Weekly upstream review for solosky/pixl.js."
             echo
-            echo "Open Pixl policy:"
+            echo "FreePixl policy:"
             echo "- preserve Solosky compatibility where feasible,"
             echo "- do not reintroduce built-in games,"
             echo "- require specs for DFU, bootloader, settings, protocol, i18n generation, or persistent UX."

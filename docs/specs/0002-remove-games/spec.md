@@ -2,7 +2,7 @@
 
 ## Summary
 
-Open Pixl imports Solosky firmware compatibility while removing built-in games
+FreePixl imports Solosky firmware compatibility while removing built-in games
 from the main firmware.
 
 ## Goals

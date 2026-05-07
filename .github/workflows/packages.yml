@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 24
           registry-url: https://npm.pkg.github.com
-          scope: "@open-pixl"
+          scope: "@freepixl"
 
       - name: Enable pnpm
         run: |
@@ -30,12 +30,12 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build protocol package
-        run: pnpm --filter @open-pixl/protocol build
+        run: pnpm --filter @freepixl/protocol build
 
       - name: Publish protocol package
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
-        run: pnpm --filter @open-pixl/protocol publish --no-git-checks
+        run: pnpm --filter @freepixl/protocol publish --no-git-checks
 
   firmware-container:
     runs-on: ubuntu-latest
@@ -53,4 +53,4 @@ jobs:
           context: .
           file: tools/firmware-container/Dockerfile
           push: true
-          tags: ghcr.io/open-pixl/pixljs-firmware-builder:latest
+          tags: ghcr.io/freepixl/pixljs-firmware-builder:latest

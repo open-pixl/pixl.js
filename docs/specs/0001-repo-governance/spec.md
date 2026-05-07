@@ -2,7 +2,7 @@
 
 ## Summary
 
-Create Open Pixl as a public, non-commercial, GPL-2.0 community repository for
+Create FreePixl as a public, non-commercial, GPL-2.0 community repository for
 Pixl.js-compatible firmware and web tools.
 
 ## Goals

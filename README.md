@@ -1,26 +1,26 @@
-# Open Pixl pixl.js
+# FreePixl pixl.js
 
-Open Pixl is a non-commercial community distribution for Pixl.js-compatible
+FreePixl is a non-commercial community distribution for Pixl.js-compatible
 hardware. The goal is to keep the firmware and web tools useful for current
 devices while preserving compatibility with the existing Solosky Pixl.js
 ecosystem.
 
 This project is independent. It is not affiliated with Nintendo, Amiibo,
 Solosky, Espruino, device vendors, marketplaces, or any commercial seller.
-Open Pixl does not monetize links, releases, support, firmware, or community
+FreePixl does not monetize links, releases, support, firmware, or community
 reports.
 
 ## Scope
 
 - Maintain Pixl.js-compatible firmware behavior from `solosky/pixl.js`.
 - Keep compatibility with existing LCD and OLED bootloaders where feasible.
-- Provide a mobile-first web updater at `https://open-pixl.github.io/pixl.js/`.
+- Provide a mobile-first web updater at `https://freepixl.github.io/pixl.js/`.
 - Publish release artifacts with checksums, manifests, and provenance.
 - Keep translations isolated in `packages/i18n` so new locales do not require
   touching unrelated application code.
-- Exclude built-in games from the main Open Pixl firmware.
+- Exclude built-in games from the main FreePixl firmware.
 
-Open Pixl does not ship copyrighted Nintendo material, Amiibo dumps, retail
+FreePixl does not ship copyrighted Nintendo material, Amiibo dumps, retail
 keys, or private DFU signing keys. Users are responsible for complying with the
 laws and terms that apply in their jurisdiction.
 
@@ -47,8 +47,8 @@ The web and package workspace uses pnpm:
 corepack enable
 pnpm install
 pnpm i18n:check
-pnpm --filter @open-pixl/protocol build
-pnpm --filter @open-pixl/web build
+pnpm --filter @freepixl/protocol build
+pnpm --filter @freepixl/web build
 ```
 
 Firmware builds use the existing nRF52 SDK container flow. Pull requests use an
@@ -67,7 +67,7 @@ and never commit private key material to the repository.
 
 ## License
 
-Open Pixl is distributed under the GPL-2.0 license. See [LICENSE](LICENSE).
+FreePixl is distributed under the GPL-2.0 license. See [LICENSE](LICENSE).
 
 Portions of the codebase are imported from `solosky/pixl.js`; attribution and
 compatibility notes are maintained in [NOTICE](NOTICE) and [UPSTREAM.md](UPSTREAM.md).

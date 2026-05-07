@@ -4,7 +4,7 @@
     "locale": "pt-BR"
   },
   "web": {
-    "app.title": "Open Pixl",
+    "app.title": "FreePixl",
     "app.subtitle": "Ferramentas de firmware mobile-first para hardware compativel com Pixl.js.",
     "language.label": "Idioma",
     "status.ready": "Pronto",
@@ -13,7 +13,7 @@
     "status.connected": "Conectado a {name}",
     "status.cancelled": "Conexao cancelada",
     "ota.title": "Atualizacao de firmware",
-    "ota.description": "Use um OTA zip do Open Pixl para seu hardware LCD ou OLED.",
+    "ota.description": "Use um OTA zip do FreePixl para seu hardware LCD ou OLED.",
     "ota.pick": "Escolher OTA zip",
     "ota.selected": "{name} selecionado",
     "ota.no_file": "Nenhum OTA selecionado",

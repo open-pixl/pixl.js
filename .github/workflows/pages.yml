@@ -40,7 +40,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build web app
-        run: pnpm --filter @open-pixl/web... build
+        run: pnpm --filter @freepixl/web... build
 
       - uses: actions/configure-pages@v6
 

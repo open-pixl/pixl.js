@@ -1,6 +1,6 @@
-# Open Pixl Issue Triage
+# FreePixl Issue Triage
 
-This is the Open Pixl adaptation of the lightweight issue flow introduced in the
+This is the FreePixl adaptation of the lightweight issue flow introduced in the
 Solosky PR #442 work.
 
 ## Intake
@@ -36,8 +36,8 @@ The canonical label list lives in `.github/labels.yml`. The helper script can
 create/update those labels and apply conservative area/spec labels:
 
 ```sh
-python3 .github/scripts/apply_issue_triage.py --repo open-pixl/pixl.js --apply
-python3 .github/scripts/apply_issue_triage.py --repo open-pixl/pixl.js --issue 1 --apply
+python3 .github/scripts/apply_issue_triage.py --repo freepixl/pixl.js --apply
+python3 .github/scripts/apply_issue_triage.py --repo freepixl/pixl.js --issue 1 --apply
 ```
 
 The script is dry-run by default.
