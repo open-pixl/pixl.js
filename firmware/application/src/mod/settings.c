@@ -43,8 +43,8 @@ const settings_data_t def_settings_data = {.backlight = 0,
                                            .amiidb_data_slot_num = 20,
                                            .qrcode_enabled = true,
                                            .chameleon_default_slot_index = INVALID_SLOT_INDEX,
-                                            .app_enable_bits = 0xFFFF,
-                                            .amiidb_sort_column = 0,
+                                           .app_enable_bits = 0xFFFF,
+                                           .amiidb_sort_column = 0,
                                            .chameleon_slot_num = 8,
                                            .amiibolink_mode = 0, // 0 = not set, use default (manual)
                                            .display_flip = false,
@@ -209,7 +209,7 @@ static bool settings_try_deserialize_versioned(const uint8_t *buffer, size_t buf
         return false;
     }
 
-    if (header->payload_size != sizeof(settings_data_t)) {
+    if (header->payload_size > sizeof(settings_data_t)) {
         return false;
     }
 
@@ -218,13 +218,20 @@ static bool settings_try_deserialize_versioned(const uint8_t *buffer, size_t buf
         return false;
     }
 
-    memcpy(out, buffer + sizeof(settings_file_header_t), sizeof(settings_data_t));
+    memcpy(out, &def_settings_data, sizeof(settings_data_t));
+    memcpy(out, buffer + sizeof(settings_file_header_t), header->payload_size);
     return true;
 }
 
 static bool settings_deserialize_legacy(const uint8_t *buffer, size_t buffer_size, settings_data_t *out) {
     if (buffer_size == 0 || buffer_size > sizeof(settings_data_t)) {
         return false;
+    }
+    if (buffer_size >= sizeof(settings_file_header_t)) {
+        const settings_file_header_t *header = (const settings_file_header_t *)buffer;
+        if (header->magic == SETTINGS_FILE_MAGIC) {
+            return false;
+        }
     }
     memcpy(out, buffer, buffer_size);
     return true;

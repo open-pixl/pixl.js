@@ -1,0 +1,69 @@
+- name: gtd:inbox
+  color: "ededed"
+  description: Newly captured item that has not been clarified.
+- name: gtd:clarify
+  color: "d4c5f9"
+  description: Needs maintainer clarification before next action.
+- name: gtd:next
+  color: "0e8a16"
+  description: Ready for a concrete next action.
+- name: gtd:waiting
+  color: "fbca04"
+  description: Waiting on reporter, hardware, release, or external input.
+- name: gtd:scheduled
+  color: "1d76db"
+  description: Planned for a specific milestone or release window.
+- name: gtd:someday
+  color: "cfd3d7"
+  description: Accepted idea with no active schedule.
+- name: type:bug
+  color: "d73a4a"
+  description: Reproducible defect.
+- name: type:feature
+  color: "a2eeef"
+  description: New feature or behavior change.
+- name: type:docs
+  color: "0075ca"
+  description: Documentation work.
+- name: type:support
+  color: "7057ff"
+  description: Usage or troubleshooting support.
+- name: type:spec
+  color: "5319e7"
+  description: Specification-driven development work.
+- name: type:upstream
+  color: "bfd4f2"
+  description: Upstream Solosky sync or compatibility tracking.
+- name: area:firmware
+  color: "0e8a16"
+  description: Firmware behavior or device code.
+- name: area:web
+  color: "1d76db"
+  description: Web updater and browser tools.
+- name: area:i18n
+  color: "c2e0c6"
+  description: Translation source, checks, or generated firmware strings.
+- name: area:dfu
+  color: "fbca04"
+  description: DFU, OTA packages, signing, or update flows.
+- name: area:hardware
+  color: "d93f0b"
+  description: Hardware revisions, vendors, batteries, displays, connectors.
+- name: area:docs
+  color: "0075ca"
+  description: Docs, guides, templates, or release notes.
+- name: area:infra
+  color: "6f42c1"
+  description: CI, packages, GitHub Pages, releases, or automation.
+- name: needs-spec
+  color: "b60205"
+  description: Requires an SDD spec before implementation.
+- name: quick-fix
+  color: "c5def5"
+  description: Small isolated fix that can skip SDD.
+- name: non-commercial
+  color: "fef2c0"
+  description: Non-commercial project policy.
+- name: no-games
+  color: "eeeeee"
+  description: Main firmware excludes built-in games.

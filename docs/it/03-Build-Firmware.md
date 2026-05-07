@@ -21,10 +21,10 @@ root@b10d54636088:/builds# cd pixl.js
 root@b10d54636088:/builds/pixl.js# git submodule update --init --recursive
 
 # compilare la versione LCD
-root@b10d54636088:/builds/pixl.js# cd fw && make all BOARD=LCD RELEASE=1
+root@b10d54636088:/builds/pixl.js# cd firmware && make all BOARD=LCD RELEASE=1
 
 # compilare la versione OLED
-root@b10d54636088:/builds/pixl.js# cd fw && make all BOARD=OLED RELEASE=1
+root@b10d54636088:/builds/pixl.js# cd firmware && make all BOARD=OLED RELEASE=1
 ```
 
 Il firmware si trova in firmware/_build/pixjs_all.hex, il pacchetto ota si trova in firmware/_build/pixjs_ota_vXXXX.zip

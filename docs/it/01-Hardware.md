@@ -4,7 +4,7 @@ L'hardware di pixl.js è sviluppato e mantenuto nel repository, puoi accedere al
 hardware/RevC è la versione più recente del PCB, si consiglia di utilizzarla.
 Puoi usare [Kicad 6](https://www.kicad.org/download/) per aprire e modificare i file del PCB e dello schema.
 
-![PCB pixl.js](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-pcb-revc.png)
+![PCB pixl.js](../../assets/pixljs-pcb-revc.png)
 
 # BOM
 * Il BOM è riassunto nel documento: [Guida all'acquisto dei materiali di RevC](01+1-RevC-bom)
@@ -13,9 +13,9 @@ Puoi usare [Kicad 6](https://www.kicad.org/download/) per aprire e modificare i 
 # Immagini
 Alcune immagini dei dispositivi attuali sono:
 
-![pixl.js 1](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-3.jpg)
-![pixl.js 2](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-4.jpg)
-![pixl.js 3](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-5.jpg)
+![pixl.js 1](../../assets/pixljs-3.jpg)
+![pixl.js 2](../../assets/pixljs-4.jpg)
+![pixl.js 3](../../assets/pixljs-5.jpg)
 
 # Demo
 
@@ -24,10 +24,10 @@ Alcune immagini dei dispositivi attuali sono:
 # Custodia
 
 Una custodia per questo progetto, realizzata dal signor Baicheng, può essere scaricata [qui](https://www.thingiverse.com/thing:5877482)
-![CUSTODIA](https://github.com/solosky/pixl.js/blob/main/assets/pixjs-case1.png)
+![CUSTODIA](../../assets/pixjs-case1.png)
 
 # Versione OLED
 
 La versione OLED è stata contribuita dall'utente @xiaohail. Puoi cliccare [qui](https://gitlab.com/xiaohai/pixl.js) per scaricare il PCB.
 
-![OLED](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-oled1.png)
+![OLED](../../assets/pixljs-oled1.png)

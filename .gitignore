@@ -53,8 +53,15 @@ firmware/temp
 
 .DS_Store
 *.un~
+__pycache__/
 
 **/.vscode/.cortex-debug*.json
 firmware/bootloader/*.local.pem
 firmware/bootloader/*private*.pem
 firmware/bootloader/*release*.pem
+firmware/bootloader/priv.pem
+
+node_modules
+apps/web/dist
+packages/*/dist
+*.tsbuildinfo

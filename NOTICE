@@ -1,0 +1,11 @@
+# Open Pixl Notice
+
+Open Pixl imports source code, documentation, and hardware materials from
+`solosky/pixl.js`, which is distributed under GPL-2.0.
+
+Open Pixl is a non-commercial community project. It is not affiliated with
+Nintendo, Amiibo, Solosky, Espruino, NXP, hardware vendors, marketplaces, or
+commercial sellers.
+
+No private DFU signing keys, Nintendo keys, raw Amiibo dumps, or copyrighted
+Nintendo assets are intentionally distributed in this repository.

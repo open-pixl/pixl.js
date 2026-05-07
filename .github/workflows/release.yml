@@ -1,0 +1,116 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version, for example v0.1.0
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  firmware:
+    strategy:
+      fail-fast: false
+      matrix:
+        board: ["LCD", "OLED"]
+    runs-on: ubuntu-latest
+    container: solosky/nrf52-sdk:latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Prepare container workspace
+        run: chown root:root .
+
+      - name: Write release DFU key
+        run: |
+          if [ -z "${{ secrets.DFU_COMPAT_PRIVATE_KEY_PEM }}" ]; then
+            echo "::error::DFU_COMPAT_PRIVATE_KEY_PEM is required for release builds"
+            exit 1
+          fi
+          printf '%s\n' "${{ secrets.DFU_COMPAT_PRIVATE_KEY_PEM }}" > "$RUNNER_TEMP/open-pixl-release-dfu.pem"
+          chmod 600 "$RUNNER_TEMP/open-pixl-release-dfu.pem"
+
+      - name: Build firmware
+        run: |
+          make -C firmware all \
+            RELEASE=1 \
+            APP_VERSION="$GITHUB_RUN_NUMBER" \
+            BOARD="${{ matrix.board }}" \
+            DFU_PRIVATE_KEY="$RUNNER_TEMP/open-pixl-release-dfu.pem"
+
+      - name: Collect release artifacts
+        run: |
+          mkdir -p dist
+          cp firmware/_build/bootloader.hex "dist/open-pixl-${{ matrix.board }}-bootloader.hex"
+          cp firmware/_build/pixljs.hex "dist/open-pixl-${{ matrix.board }}-application.hex"
+          cp firmware/_build/pixljs_all.hex "dist/open-pixl-${{ matrix.board }}-full.hex"
+          cp firmware/_build/pixjs_ota_v${GITHUB_RUN_NUMBER}.zip "dist/open-pixl-${{ matrix.board }}-ota.zip"
+          cd dist
+          zip "open-pixl-${{ matrix.board }}-release.zip" open-pixl-${{ matrix.board }}-*.hex open-pixl-${{ matrix.board }}-ota.zip
+          shasum -a 256 * > "open-pixl-${{ matrix.board }}-SHA256SUMS.txt"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: open-pixl-release-${{ matrix.board }}
+          if-no-files-found: error
+          path: dist/*
+
+  publish:
+    needs: firmware
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ github.event.inputs.version || github.ref_name }}
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          pattern: open-pixl-release-*
+          path: release-artifacts
+          merge-multiple: true
+
+      - name: Create manifest
+        run: |
+          mkdir -p dist
+          cp release-artifacts/* dist/
+          cd dist
+          shasum -a 256 * > SHA256SUMS.txt
+          cd ..
+          python3 - <<'PY'
+          import json
+          import os
+
+          artifacts = sorted(
+              name for name in os.listdir("dist") if os.path.isfile(os.path.join("dist", name))
+          )
+          manifest = {
+              "project": "open-pixl/pixl.js",
+              "tag": os.environ["RELEASE_TAG"],
+              "homepage": "https://open-pixl.github.io/pixl.js/",
+              "artifacts": artifacts,
+          }
+          with open("dist/manifest.json", "w", encoding="utf-8") as fh:
+              json.dump(manifest, fh, indent=2)
+              fh.write("\n")
+          PY
+
+      - name: Attest artifacts
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: dist/*
+
+      - name: Publish GitHub release
+        run: |
+          gh release view "$RELEASE_TAG" >/dev/null 2>&1 || \
+            gh release create "$RELEASE_TAG" --title "$RELEASE_TAG" --notes "Open Pixl firmware release."
+          gh release upload "$RELEASE_TAG" dist/* --clobber

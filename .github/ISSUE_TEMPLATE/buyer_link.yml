@@ -1,0 +1,97 @@
+name: Buyer link submission
+description: Submit a community report for Pixl.js-compatible hardware.
+title: "[Buyer Guide] "
+labels: ["gtd:inbox", "type:docs", "area:hardware", "non-commercial"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open Pixl is non-commercial. Buyer links are community reports, not ads,
+        affiliate links, paid placements, or endorsements.
+  - type: input
+    id: vendor
+    attributes:
+      label: Vendor or listing name
+      placeholder: "Example: marketplace listing, shop name, self-built batch"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Use a direct public URL. Do not submit affiliate or tracking links.
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: Region
+      placeholder: "Example: US, EU, BR, CN, worldwide"
+    validations:
+      required: true
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Screen
+      options:
+        - LCD
+        - OLED
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: connector
+    attributes:
+      label: Connector
+      placeholder: "Example: USB-C, Micro-USB, pogo, unknown"
+    validations:
+      required: false
+  - type: input
+    id: battery
+    attributes:
+      label: Battery
+      placeholder: "Example: included, not included, 100 mAh, unknown"
+    validations:
+      required: false
+  - type: dropdown
+    id: firmware-preinstalled
+    attributes:
+      label: Firmware preinstalled
+      options:
+        - Yes
+        - No
+        - Unknown
+    validations:
+      required: true
+  - type: input
+    id: reported-firmware
+    attributes:
+      label: Reported firmware
+      placeholder: "Example: Solosky 2.13.0, vendor firmware, unknown"
+    validations:
+      required: false
+  - type: dropdown
+    id: key-preinstalled
+    attributes:
+      label: Key preinstalled
+      description: Do not upload or link keys.
+      options:
+        - Yes
+        - No
+        - Unknown
+    validations:
+      required: true
+  - type: input
+    id: price-reported
+    attributes:
+      label: Price reported
+      placeholder: "Example: 28 USD, 150 BRL, varies"
+    validations:
+      required: false
+  - type: textarea
+    id: report
+    attributes:
+      label: Experience report
+      description: Mention shipping, flashing, hardware quirks, display target, and anything maintainers should verify.
+    validations:
+      required: true

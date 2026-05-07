@@ -3,3 +3,6 @@ contact_links:
   - name: Pixl.js community Discord
     url: https://discord.gg/4mqeQwcAB2
     about: Ask usage questions and discuss hardware builds with the community.
+  - name: Open Pixl buyer guide
+    url: https://github.com/open-pixl/pixl.js/blob/main/docs/hardware/buyer-guide.md
+    about: Read the non-commercial community hardware reporting policy.

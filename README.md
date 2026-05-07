@@ -1,143 +1,73 @@
-<a id="zh-cn"></a>
+# Open Pixl pixl.js
 
-# Pixl.js ([中文](#zh-cn) | [English](#en))
+Open Pixl is a non-commercial community distribution for Pixl.js-compatible
+hardware. The goal is to keep the firmware and web tools useful for current
+devices while preserving compatibility with the existing Solosky Pixl.js
+ecosystem.
 
-这是一个基于原版 [Pixl.js](http://www.espruino.com/Pixl.js) 的复刻版本，主要功能是用来模拟 Amiibo。
+This project is independent. It is not affiliated with Nintendo, Amiibo,
+Solosky, Espruino, device vendors, marketplaces, or any commercial seller.
+Open Pixl does not monetize links, releases, support, firmware, or community
+reports.
 
-## 图片
+## Scope
 
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-3.jpg)
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-4.jpg)
+- Maintain Pixl.js-compatible firmware behavior from `solosky/pixl.js`.
+- Keep compatibility with existing LCD and OLED bootloaders where feasible.
+- Provide a mobile-first web updater at `https://open-pixl.github.io/pixl.js/`.
+- Publish release artifacts with checksums, manifests, and provenance.
+- Keep translations isolated in `packages/i18n` so new locales do not require
+  touching unrelated application code.
+- Exclude built-in games from the main Open Pixl firmware.
 
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-5.jpg)
+Open Pixl does not ship copyrighted Nintendo material, Amiibo dumps, retail
+keys, or private DFU signing keys. Users are responsible for complying with the
+laws and terms that apply in their jurisdiction.
 
-## 文档
+## Repository Layout
 
-* [中文文档](docs/zh/README.md)
-* [英文文档](docs/en/README.md)
-* [意大利语文档](docs/it/README.md)
+```text
+.github/              GitHub templates, labels, workflows, and automation
+apps/web/             Mobile-first React/Vite web tools for GitHub Pages
+apps/web-legacy/      Imported Solosky web app kept for compatibility research
+docs/process/         SDD and GTD operating process
+docs/specs/           Specification-driven development records
+docs/hardware/        Hardware notes and community buyer guide
+firmware/             Pixl.js-compatible firmware source
+hardware/             Imported hardware files and BOMs
+packages/i18n/        Locale source of truth and firmware generators
+packages/protocol/    Shared TypeScript protocol package
+```
 
-## 内置游戏
+## Development
 
-由于固件空间和维护成本，主固件不再包含内置游戏。需要自行构建实验性游戏固件的高级用户可以参考 [`game`](https://github.com/solosky/pixl.js/tree/game) 分支。
+The web and package workspace uses pnpm:
 
-## 致谢
+```sh
+corepack enable
+pnpm install
+pnpm i18n:check
+pnpm --filter @open-pixl/protocol build
+pnpm --filter @open-pixl/web build
+```
 
-* [FlipperZero Firmware](https://github.com/flipperdevices/flipperzero-firmware)
-* [mlib](https://github.com/P-p-H-d/mlib)
-* [TLSF](https://github.com/mattconte/tlsf)
-* [cwalk](https://github.com/likle/cwalk)
-* [SPIFFS](https://github.com/pellepl/spiffs)
-* [ChameleonUltra](https://github.com/RfidResearchGroup/ChameleonUltra)
+Firmware builds use the existing nRF52 SDK container flow. Pull requests use an
+ephemeral DFU key. Releases use the `DFU_COMPAT_PRIVATE_KEY_PEM` GitHub secret
+and never commit private key material to the repository.
 
-## 贡献
+## Process
 
-* 特别感谢 @Caleeeeeeeeeeeee 完善的引导加载程序。
-* 特别感谢 @白橙 制作的外壳。
-* 特别感谢 @impeeza 提供的文档翻译。
-
-## 讨论群
-
-国内用户可以加入 QQ 群 109761876 进行交流。
-
-## 官方频道
-
-在哪里找到社区？
-
-* [Pixl.js 社区 Discord 服务器](https://discord.gg/4mqeQwcAB2)
-
-## 声明
-
-本项目为开源项目，仅为学习研究用途，请勿用于商业用途。<br />
-Amiibo 是任天堂的注册商标，NTAG21X 为 NXP 的注册商标。
-
-内置的 Amiibo 数据库来源分别如下：
-
-* [amiiloop](https://download.amiloop.app/)
-* [AmiiboAPI](https://www.amiiboapi.com/)
-
-源代码没有包含任何有任天堂版权的资源（比如相关密钥、Amiibo 原始数据等）。
-
-## 许可证
-
-本项目基于 GPL 2.0 许可证发布，使用请遵循许可证的约定。
-
-* 如果对项目做了修改，需要把改后的源码发布出来
-* 发布出来的源码必须要使用相同的许可证发布
-
-## 提示
-
-Amiibo 无限刷需要网上搜索 `key_retail.bin` 文件，然后上传到磁盘根目录后才能使用。
-
-----
-
-<a id="en"></a>
-
-# Pixl.js ([中文](#zh-cn) | [English](#en))
-
-This is a recreated version based on the original [Pixl.js](http://www.espruino.com/Pixl.js). Its main purpose is Amiibo emulation.
-
-## Images
-
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-3.jpg)
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-4.jpg)
-
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-5.jpg)
-
-## Documentation
-
-* [Chinese Documentation](docs/zh/README.md)
-* [English Documentation](docs/en/README.md)
-* [Italian Documentation](docs/it/README.md)
-
-## Built-in Games
-
-Built-in games are not part of the main firmware anymore because of firmware size and maintenance trade-offs. Advanced users who want to build an unsupported games firmware can use the [`game`](https://github.com/solosky/pixl.js/tree/game) branch.
-
-## Credits
-
-* [FlipperZero Firmware](https://github.com/flipperdevices/flipperzero-firmware)
-* [mlib](https://github.com/P-p-H-d/mlib)
-* [TLSF](https://github.com/mattconte/tlsf)
-* [cwalk](https://github.com/likle/cwalk)
-* [SPIFFS](https://github.com/pellepl/spiffs)
-* [ChameleonUltra](https://github.com/RfidResearchGroup/ChameleonUltra)
-
-## Contributions
-
-* Special thanks to @Caleeeeeeeeeeeee for improving the Bootloader.
-* Special thanks to @白橙 for making the case.
-* Special thanks to @impeeza for the documentation translation.
-
-## Discussion Group
-
-Users in China can join QQ group 109761876 for discussion.
-
-## Official Channel
-
-Where do you find the community?
-
-* [Pixl.js community discord server](https://discord.gg/4mqeQwcAB2)
-
-## Disclaimer
-
-This is an open source project for learning and research only. Do not use it for commercial purposes.<br />
-Amiibo is a registered trademark of Nintendo, and NTAG21X is a registered trademark of NXP.
-
-The built-in Amiibo database sources are:
-
-* [amiiloop](https://download.amiloop.app/)
-* [AmiiboAPI](https://www.amiiboapi.com/)
-
-The source code does not include any Nintendo-copyrighted resources, such as related keys or raw Amiibo data.
+- Use [SDD](docs/process/sdd.md) for changes that affect compatibility,
+  persistent behavior, DFU, bootloader, settings, protocol, i18n generation, or
+  user-facing workflows.
+- Use [GTD](docs/process/gtd.md) for issue intake and maintainer flow.
+- Use the [buyer guide](docs/hardware/buyer-guide.md) for community hardware
+  reports. Buyer links are not ads, affiliate links, or endorsements.
+- Track upstream policy in [UPSTREAM.md](UPSTREAM.md).
 
 ## License
 
-This project is released under the GPL 2.0 License. Please follow the license terms when using it.
+Open Pixl is distributed under the GPL-2.0 license. See [LICENSE](LICENSE).
 
-* If you modify the project, you need to publish the modified source code
-* The published source code must use the same license
-
-## Note
-
-The unlimited Amiibo scan feature requires a `key_retail.bin` file. Search for that file online, then upload it to the disk root before using the feature.
+Portions of the codebase are imported from `solosky/pixl.js`; attribution and
+compatibility notes are maintained in [NOTICE](NOTICE) and [UPSTREAM.md](UPSTREAM.md).

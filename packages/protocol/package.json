@@ -1,0 +1,29 @@
+{
+  "name": "@open-pixl/protocol",
+  "version": "0.1.0",
+  "description": "Shared TypeScript protocol helpers for Open Pixl web tools.",
+  "type": "module",
+  "license": "GPL-2.0-only",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}

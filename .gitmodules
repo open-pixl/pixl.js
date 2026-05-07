@@ -1,18 +1,18 @@
-[submodule "fw/components/mlib"]
+[submodule "firmware/components/mlib"]
 	path = firmware/components/mlib
 	url = https://github.com/P-p-H-d/mlib.git
-[submodule "fw/components/tlsf"]
+[submodule "firmware/components/tlsf"]
 	path = firmware/components/tlsf
 	url = https://github.com/mattconte/tlsf.git
-[submodule "fw/components/cwalk"]
+[submodule "firmware/components/cwalk"]
 	path = firmware/components/cwalk
 	url = https://github.com/likle/cwalk.git
-[submodule "fw/components/spiffs"]
+[submodule "firmware/components/spiffs"]
 	path = firmware/components/spiffs
 	url = https://github.com/pellepl/spiffs.git
-[submodule "fw/components/littlefs"]
+[submodule "firmware/components/littlefs"]
 	path = firmware/components/littlefs
 	url = https://github.com/littlefs-project/littlefs
-[submodule "fw/components/chameleon-ultra"]
+[submodule "firmware/components/chameleon-ultra"]
 	path = firmware/components/chameleon-ultra
 	url = https://github.com/solosky/ChameleonUltra.git

@@ -1,7 +1,7 @@
 name: Feature request
 description: Suggest a new feature or behavior change.
 title: "[Feature] "
-labels: ["enhancement"]
+labels: ["gtd:inbox", "type:feature"]
 body:
   - type: textarea
     id: problem

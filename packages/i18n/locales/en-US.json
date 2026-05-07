@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "English",
+    "locale": "en-US"
+  },
+  "web": {
+    "app.title": "Open Pixl",
+    "app.subtitle": "Mobile-first firmware tools for Pixl.js-compatible hardware.",
+    "language.label": "Language",
+    "status.ready": "Ready",
+    "status.unsupported": "Web Bluetooth is not available in this browser.",
+    "status.connecting": "Connecting...",
+    "status.connected": "Connected to {name}",
+    "status.cancelled": "Connection cancelled",
+    "ota.title": "Firmware update",
+    "ota.description": "Use an Open Pixl release OTA zip for your LCD or OLED hardware.",
+    "ota.pick": "Choose OTA zip",
+    "ota.selected": "Selected {name}",
+    "ota.no_file": "No OTA file selected",
+    "connect.title": "Device",
+    "connect.description": "Connect with Chrome or Edge on macOS or Android.",
+    "connect.button": "Connect device",
+    "compat.supported": "Supported: macOS Chrome, macOS Edge, Android Chrome, Android Edge.",
+    "compat.fallback": "iOS, Safari, and Firefox users should download the OTA zip and use nRF Connect.",
+    "release.link": "Open releases"
+  },
+  "firmware": {
+    "app.settings.display_flip": "Flip Screen",
+    "app.settings.return_key_detect": "Detect Return Button",
+    "app.settings.return_key": "Return Button",
+    "app.settings.return_key_not_configured": "Not configured",
+    "app.settings.return_key_set": "Return button set: GPIO %u",
+    "app.settings.return_key_not_detected": "Return button not detected",
+    "app.settings.return_key_detect_running": "Detection already running",
+    "app.settings.return_key_detect_prompt": "Press physical Return button",
+    "app.settings.return_key_detect_failed": "Cannot start return detect"
+  }
+}

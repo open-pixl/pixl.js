@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "Portugues (Brasil)",
+    "locale": "pt-BR"
+  },
+  "web": {
+    "app.title": "Open Pixl",
+    "app.subtitle": "Ferramentas de firmware mobile-first para hardware compativel com Pixl.js.",
+    "language.label": "Idioma",
+    "status.ready": "Pronto",
+    "status.unsupported": "Web Bluetooth nao esta disponivel neste navegador.",
+    "status.connecting": "Conectando...",
+    "status.connected": "Conectado a {name}",
+    "status.cancelled": "Conexao cancelada",
+    "ota.title": "Atualizacao de firmware",
+    "ota.description": "Use um OTA zip do Open Pixl para seu hardware LCD ou OLED.",
+    "ota.pick": "Escolher OTA zip",
+    "ota.selected": "{name} selecionado",
+    "ota.no_file": "Nenhum OTA selecionado",
+    "connect.title": "Dispositivo",
+    "connect.description": "Conecte com Chrome ou Edge no macOS ou Android.",
+    "connect.button": "Conectar dispositivo",
+    "compat.supported": "Compativel: macOS Chrome, macOS Edge, Android Chrome, Android Edge.",
+    "compat.fallback": "Usuarios de iOS, Safari e Firefox devem baixar o OTA zip e usar o nRF Connect.",
+    "release.link": "Abrir releases"
+  },
+  "firmware": {
+    "app.settings.display_flip": "Inverter tela",
+    "app.settings.return_key_detect": "Detectar botao voltar",
+    "app.settings.return_key": "Botao voltar",
+    "app.settings.return_key_not_configured": "Nao configurado",
+    "app.settings.return_key_set": "Botao voltar definido: GPIO %u",
+    "app.settings.return_key_not_detected": "Botao voltar nao detectado",
+    "app.settings.return_key_detect_running": "Deteccao ja em execucao",
+    "app.settings.return_key_detect_prompt": "Pressione o botao fisico voltar",
+    "app.settings.return_key_detect_failed": "Nao foi possivel iniciar a deteccao"
+  }
+}

@@ -6,10 +6,10 @@ Il progetto mira principalmente ad utilizzare il dispositivo Pixl.js come emulat
 
 Immagini
 
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-3.jpg)
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-4.jpg)
+![image](../../assets/pixljs-3.jpg)
+![image](../../assets/pixljs-4.jpg)
 
-![image](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-5.jpg)
+![image](../../assets/pixljs-5.jpg)
 
 ## Documentazione
 

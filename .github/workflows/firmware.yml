@@ -1,0 +1,62 @@
+name: firmware
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "firmware/**"
+      - ".github/workflows/firmware.yml"
+  pull_request:
+    paths:
+      - "firmware/**"
+      - ".github/workflows/firmware.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        board: ["LCD", "OLED"]
+    runs-on: ubuntu-latest
+    container: solosky/nrf52-sdk:latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Prepare container workspace
+        run: chown root:root .
+
+      - name: Generate pull-request DFU key
+        run: nrfutil keys generate "$RUNNER_TEMP/open-pixl-pr-dfu.pem"
+
+      - name: Build firmware
+        run: |
+          make -C firmware all \
+            RELEASE=1 \
+            APP_VERSION="$GITHUB_RUN_NUMBER" \
+            BOARD="${{ matrix.board }}" \
+            DFU_PRIVATE_KEY="$RUNNER_TEMP/open-pixl-pr-dfu.pem"
+
+      - name: Generate size report
+        run: make -C firmware size_report RELEASE=1 APP_VERSION="$GITHUB_RUN_NUMBER" BOARD="${{ matrix.board }}"
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p dist
+          cp firmware/_build/bootloader.hex "dist/open-pixl-${{ matrix.board }}-bootloader.hex"
+          cp firmware/_build/pixljs.hex "dist/open-pixl-${{ matrix.board }}-application.hex"
+          cp firmware/_build/pixljs_all.hex "dist/open-pixl-${{ matrix.board }}-full.hex"
+          cp firmware/_build/pixjs_ota_v${GITHUB_RUN_NUMBER}.zip "dist/open-pixl-${{ matrix.board }}-pr-ota.zip"
+          cp firmware/_build/size_report_${{ matrix.board }}.txt "dist/open-pixl-${{ matrix.board }}-size.txt"
+          cp firmware/_build/size_report_${{ matrix.board }}.json "dist/open-pixl-${{ matrix.board }}-size.json"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: open-pixl-pr-firmware-${{ matrix.board }}
+          if-no-files-found: error
+          path: dist/*

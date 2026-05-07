@@ -4,7 +4,7 @@ The pixl.js hardware is developed and maintained on the repository, you can acce
 hardware/RevC is the latest PCB version, its recommended to use it.
 You can use [Kicad 6](https://www.kicad.org/download/) to open and edit the PCB and Schematic files.
 
-![pixl.js PCB](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-pcb-revc.png)
+![pixl.js PCB](../../assets/pixljs-pcb-revc.png)
 
 # BOM
 * The BoM is summaried on the doc: [RevC Bill of Materials Buying Guide](01+1-RevC-bom.md)
@@ -14,9 +14,9 @@ You can use [Kicad 6](https://www.kicad.org/download/) to open and edit the PCB 
 # Pictures
 Some pictures of current devices are:
 
-![pixl.js 1](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-3.jpg)
-![pixl.js 2](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-4.jpg)
-![pixl.js 3](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-5.jpg)
+![pixl.js 1](../../assets/pixljs-3.jpg)
+![pixl.js 2](../../assets/pixljs-4.jpg)
+![pixl.js 3](../../assets/pixljs-5.jpg)
 
 # Demo
 
@@ -25,10 +25,10 @@ Some pictures of current devices are:
 # Shell
 
 A shell for this project, made by Mr. Baicheng can be downloaded [here](https://www.thingiverse.com/thing:5877482)
-![SHELL](https://github.com/solosky/pixl.js/blob/main/assets/pixjs-case1.png)
+![SHELL](../../assets/pixjs-case1.png)
 
 # OLED version
 
 The OLED version was contributed by netizen @xiaohail. You can click [here](https://gitlab.com/xiaohai/pixl.js) to download the PCB.
 
-![OLED](https://github.com/solosky/pixl.js/blob/main/assets/pixljs-oled1.png)
+![OLED](../../assets/pixljs-oled1.png)

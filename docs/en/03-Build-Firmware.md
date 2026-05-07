@@ -21,10 +21,10 @@ root@b10d54636088:/builds# cd pixl.js
 root@b10d54636088:/builds/pixl.js# git submodule update --init --recursive
 
 # build LCD version
-root@b10d54636088:/builds/pixl.js# cd fw && make all BOARD=LCD RELEASE=1
+root@b10d54636088:/builds/pixl.js# cd firmware && make all BOARD=LCD RELEASE=1
 
 # build OLED version
-root@b10d54636088:/builds/pixl.js# cd fw && make all BOARD=OLED RELEASE=1
+root@b10d54636088:/builds/pixl.js# cd firmware && make all BOARD=OLED RELEASE=1
 
 ```
 
@@ -37,7 +37,7 @@ OTA packages are signed with the key selected by `DFU_PRIVATE_KEY`. The default 
 If you build a custom bootloader with a different public key, pass the matching private key when generating OTA packages:
 
 ```
-cd fw && make ota DFU_PRIVATE_KEY=/path/to/custom-private-key.pem
+cd firmware && make ota DFU_PRIVATE_KEY=/path/to/custom-private-key.pem
 ```
 
 Devices will only accept OTA packages signed by the private key that matches the public key compiled into their bootloader. Do not commit personal or device-specific private keys.

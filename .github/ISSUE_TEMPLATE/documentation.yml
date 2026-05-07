@@ -1,7 +1,7 @@
 name: Documentation
 description: Request a documentation fix, clarification, or new guide.
 title: "[Docs] "
-labels: ["documentation"]
+labels: ["gtd:inbox", "type:docs", "area:docs"]
 body:
   - type: textarea
     id: page

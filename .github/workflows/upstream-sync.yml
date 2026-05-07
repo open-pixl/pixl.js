@@ -1,0 +1,51 @@
+name: upstream-sync
+
+on:
+  schedule:
+    - cron: "17 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  open-sync-issue:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Fetch Solosky upstream
+        run: |
+          git remote add solosky https://github.com/solosky/pixl.js.git
+          git fetch --no-tags solosky main develop
+
+      - name: Build weekly summary
+        run: |
+          {
+            echo "Weekly upstream review for solosky/pixl.js."
+            echo
+            echo "Open Pixl policy:"
+            echo "- preserve Solosky compatibility where feasible,"
+            echo "- do not reintroduce built-in games,"
+            echo "- require specs for DFU, bootloader, settings, protocol, i18n generation, or persistent UX."
+            echo
+            echo "Recent upstream develop commits:"
+            git log --since='7 days ago' --oneline solosky/develop -- || true
+            echo
+            echo "Recent upstream main commits:"
+            git log --since='7 days ago' --oneline solosky/main -- || true
+          } > upstream-sync.md
+
+      - name: Create issue
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Weekly upstream sync: $(date -u +%Y-%m-%d)" \
+            --label "gtd:inbox" \
+            --label "type:upstream" \
+            --body-file upstream-sync.md

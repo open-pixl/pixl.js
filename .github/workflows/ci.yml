@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  web-and-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.10.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run workspace checks
+        run: pnpm run ci
+
+      - name: Verify generated i18n output
+        run: git diff --exit-code -- packages/i18n/generated/firmware
+
+  firmware-path-sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify removed game symbols stay removed
+        run: |
+          if grep -R -n -E 'APP_GAME_ENABLE|MINI_APP_ID_GAME|app_game_32x32|_L_APP_GAME' firmware README.md; then
+            echo "::error::Removed game symbols were found"
+            exit 1
+          fi
+
+      - name: Verify private keys are not tracked
+        run: |
+          if git ls-files | grep -E '(^|/)priv\.pem$|private.*\.pem$|release.*\.pem$'; then
+            echo "::error::Private key material must not be tracked"
+            exit 1
+          fi

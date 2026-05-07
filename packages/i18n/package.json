@@ -1,0 +1,19 @@
+{
+  "name": "@open-pixl/i18n",
+  "version": "0.1.0",
+  "description": "Open Pixl locale source and firmware string generator.",
+  "type": "module",
+  "license": "GPL-2.0-only",
+  "exports": {
+    "./locales/*.json": "./locales/*.json"
+  },
+  "files": [
+    "generated",
+    "locales",
+    "scripts"
+  ],
+  "scripts": {
+    "check": "node scripts/check-i18n.mjs",
+    "generate-firmware": "node scripts/generate-firmware-i18n.mjs"
+  }
+}
