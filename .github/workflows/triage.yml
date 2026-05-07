@@ -23,14 +23,18 @@ jobs:
             const labels = new Set();
 
             if (![...existing].some((name) => name.startsWith("gtd:"))) labels.add("gtd:inbox");
-            if (/(dfu|ota|bootloader|signing|release key)/.test(text)) labels.add("area:dfu");
-            if (/(firmware|nfc|amiibo|settings|return key|screen|display)/.test(text)) labels.add("area:firmware");
-            if (/(web|browser|chrome|edge|pages|vite|mobile)/.test(text)) labels.add("area:web");
-            if (/(translation|locale|i18n|string)/.test(text)) labels.add("area:i18n");
-            if (/(hardware|vendor|battery|lcd|oled|connector|buyer)/.test(text)) labels.add("area:hardware");
-            if (/(workflow|ci|package|ghcr|github action|infra)/.test(text)) labels.add("area:infra");
+            if (![...existing].some((name) => name.startsWith("area:"))) {
+              if (/(dfu|ota|bootloader|signing|release key)/.test(text)) labels.add("area:dfu");
+              if (/(firmware|nfc|amiibo|settings|return key|screen|display)/.test(text)) labels.add("area:firmware");
+              if (/(web|browser|chrome|edge|pages|vite|mobile)/.test(text)) labels.add("area:web");
+              if (/(translation|locale|i18n|string)/.test(text)) labels.add("area:i18n");
+              if (/(hardware|vendor|battery|lcd|oled|connector|buyer)/.test(text)) labels.add("area:hardware");
+              if (/(workflow|ci|package|ghcr|github action|infra)/.test(text)) labels.add("area:infra");
+            }
 
-            if (/(dfu|ota|bootloader|settings|protocol|i18n generator|persistent ux|migration|rollback)/.test(text)) {
+            const specEligible = existing.has("type:bug") || existing.has("type:feature") || existing.has("type:spec") ||
+              ![...existing].some((name) => name.startsWith("type:"));
+            if (specEligible && /(dfu|ota|bootloader|settings|protocol|i18n generator|persistent ux|migration|rollback)/.test(text)) {
               labels.add("needs-spec");
             }
 

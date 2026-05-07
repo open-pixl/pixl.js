@@ -130,11 +130,16 @@ def classify_issue(repo: str, issue_number: int, apply: bool) -> None:
     if not any(label.startswith("gtd:") for label in existing):
         labels.add("gtd:inbox")
 
-    for rule in AREA_RULES:
-        if any(term in text for term in rule.terms):
-            labels.add(rule.label)
+    if not any(label.startswith("area:") for label in existing):
+        for rule in AREA_RULES:
+            if any(term in text for term in rule.terms):
+                labels.add(rule.label)
 
-    if any(term in text for term in SPEC_TERMS):
+    spec_eligible = (
+        {"type:bug", "type:feature", "type:spec"} & existing
+        or not any(label.startswith("type:") for label in existing)
+    )
+    if spec_eligible and any(term in text for term in SPEC_TERMS):
         labels.add("needs-spec")
 
     labels.difference_update(existing)
